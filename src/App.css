@@ -1,42 +1,69 @@
+/* Root Container Styling */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #f0f0f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 30px rgba(100, 100, 255, 0.2);
+  border-radius: 1rem;
+  animation: fadeInRoot 1.2s ease-out;
 }
 
+/* Logo Styling with Unique Hover Transitions */
 .logo {
-  height: 6em;
+  height: 3em;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  filter: drop-shadow(0 0 0 transparent);
+  transform: rotate(0deg);
 }
 
-@keyframes logo-spin {
+.logo:hover {
+  filter: drop-shadow(0 0 12px #ff6ec4);
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 12px #61dafb);
+  transform: scale(1.1) rotate(3deg);
+}
+
+/* Fade-in Animation for the Root */
+@keyframes fadeInRoot {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Add a cool glowing pulse effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.logo:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
 }
